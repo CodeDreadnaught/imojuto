@@ -1,6 +1,5 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { useActionState } from "react";
 import { LogIn } from "lucide-react";
 import { loginUser } from "@/actions/auth";
@@ -20,11 +19,8 @@ function FieldError({ messages }: { messages?: string[] }) {
   return messages?.length ? <p className="text-xs font-medium text-red-700">{messages[0]}</p> : null;
 }
 
-export function LoginForm() {
-  const searchParams = useSearchParams();
+export function LoginForm({ callbackUrl, registered }: { callbackUrl: string; registered: boolean }) {
   const [state, formAction, pending] = useActionState(loginUser, initialState);
-  const callbackUrl = searchParams.get("callbackUrl") ?? "/dashboard";
-  const registered = searchParams.get("registered") === "1";
 
   return (
     <form action={formAction} className="grid gap-4">
