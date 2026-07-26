@@ -4,20 +4,20 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex h-10 items-center justify-center gap-2 rounded-md px-4 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex h-10 cursor-pointer items-center justify-center gap-2 rounded-md px-4 text-sm font-semibold tracking-normal transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-emerald-700 text-white hover:bg-emerald-800 focus-visible:outline-emerald-700",
-        secondary: "bg-stone-100 text-stone-950 hover:bg-stone-200 focus-visible:outline-stone-500",
-        outline: "border border-stone-300 bg-white text-stone-950 hover:bg-stone-50 focus-visible:outline-emerald-700",
-        ghost: "text-stone-700 hover:bg-stone-100 hover:text-stone-950 focus-visible:outline-stone-500",
-        destructive: "bg-red-700 text-white hover:bg-red-800 focus-visible:outline-red-700",
+        default: "bg-[#1d4f43] text-[#fffaf1] shadow-sm shadow-emerald-950/10 hover:bg-[#163f36] focus-visible:outline-[#1d4f43]",
+        secondary: "bg-[#eee8dd] text-[#27241f] hover:bg-[#e4dccf] focus-visible:outline-[#8f7b5f]",
+        outline: "border border-[#d8cebe] bg-white/80 text-[#27241f] shadow-sm hover:border-[#b7a98f] hover:bg-[#fffaf1] focus-visible:outline-[#1d4f43]",
+        ghost: "text-[#595044] hover:bg-[#efe8dc] hover:text-[#27241f] focus-visible:outline-[#8f7b5f]",
+        destructive: "bg-[#9f2f2f] text-white hover:bg-[#842727] focus-visible:outline-[#9f2f2f]",
       },
       size: {
         default: "h-10 px-4",
         sm: "h-8 px-3 text-xs",
-        lg: "h-11 px-5",
+        lg: "h-12 px-5",
         icon: "h-10 w-10 px-0",
       },
     },

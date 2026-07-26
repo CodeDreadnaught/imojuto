@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { Power, PowerOff, UserPlus } from "lucide-react";
+import { Power, Prohibit, UserPlus } from "@phosphor-icons/react";
 import { createManagedUser, setUserActive } from "@/actions/users";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -30,7 +30,7 @@ export function UserManagementClient({ users, roles }: { users: UserRow[]; roles
 
   return (
     <div className="grid gap-6">
-      <form action={formAction} className="grid gap-4 rounded-lg border border-stone-200 bg-white p-5 shadow-sm md:grid-cols-2">
+      <form action={formAction} className="grid gap-4 rounded-lg border border-[#ded5c5] bg-white/90 p-5 shadow-[0_18px_60px_rgba(39,36,31,0.06)] md:grid-cols-2">
         <div className="grid gap-2">
           <Label htmlFor="name">Name</Label>
           <Input id="name" name="name" required />
@@ -59,9 +59,9 @@ export function UserManagementClient({ users, roles }: { users: UserRow[]; roles
           </Select>
         </div>
         <div className="md:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className={state.ok ? "text-sm text-emerald-800" : "text-sm text-stone-600"}>{state.message || "Create officers and administrators directly."}</p>
+          <p className={state.ok ? "text-sm font-semibold text-[#1d4f43]" : "text-sm text-[#655c50]"}>{state.message || "Create officers and administrators directly."}</p>
           <Button type="submit" disabled={pending}>
-            <UserPlus className="h-4 w-4" aria-hidden="true" />
+            <UserPlus className="h-4 w-4" weight="duotone" aria-hidden="true" />
             {pending ? "Creating" : "Create user"}
           </Button>
         </div>
@@ -79,7 +79,7 @@ export function UserManagementClient({ users, roles }: { users: UserRow[]; roles
         <TableBody>
           {users.map((user) => (
             <TableRow key={user.id}>
-              <TableCell className="font-medium text-stone-950">{user.name}</TableCell>
+              <TableCell className="font-semibold text-[#27241f]">{user.name}</TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell>{user.role}</TableCell>
               <TableCell>
@@ -90,7 +90,7 @@ export function UserManagementClient({ users, roles }: { users: UserRow[]; roles
                   <input type="hidden" name="id" value={user.id} />
                   <input type="hidden" name="isActive" value={String(!user.isActive)} />
                   <Button type="submit" size="sm" variant="outline">
-                    {user.isActive ? <PowerOff className="h-4 w-4" aria-hidden="true" /> : <Power className="h-4 w-4" aria-hidden="true" />}
+                    {user.isActive ? <Prohibit className="h-4 w-4" weight="duotone" aria-hidden="true" /> : <Power className="h-4 w-4" weight="duotone" aria-hidden="true" />}
                     {user.isActive ? "Deactivate" : "Activate"}
                   </Button>
                 </form>

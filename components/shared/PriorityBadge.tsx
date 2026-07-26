@@ -12,10 +12,10 @@ export const priorityLabels = {
 } satisfies Record<RequestPriority, string>;
 
 export const priorityStyles = {
-  low: "border border-stone-300 bg-stone-100 text-stone-700",
-  medium: "border border-teal-200 bg-teal-50 text-teal-900",
-  high: "border border-orange-200 bg-orange-50 text-orange-900",
-  urgent: "border border-red-200 bg-red-50 text-red-900",
+  low: "border border-[#d8cebe] bg-[#f1ebe1] text-[#655c50]",
+  medium: "border border-[#b9d8c7] bg-[#e6f2eb] text-[#1d4f43]",
+  high: "border border-[#efc694] bg-[#fff0dc] text-[#8a4d12]",
+  urgent: "border border-[#eaa9a9] bg-[#fff0f0] text-[#9f2f2f]",
 } satisfies Record<RequestPriority, string>;
 
 type PriorityBadgeProps = {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ClipboardList, PlusCircle } from "lucide-react";
+import { ClipboardText, PlusCircle } from "@phosphor-icons/react/dist/ssr";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,10 +19,10 @@ export default async function DashboardPage() {
               <CardTitle>Submit maintenance request</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm leading-6 text-stone-600">Log a fault with location, priority, category, and evidence.</p>
+              <p className="text-sm leading-6 text-[#655c50]">Log a fault with location, priority, category, and evidence.</p>
               <Button asChild className="mt-4">
                 <Link href="/requests/new">
-                  <PlusCircle className="h-4 w-4" aria-hidden="true" />
+                  <PlusCircle className="h-4 w-4" weight="duotone" aria-hidden="true" />
                   New request
                 </Link>
               </Button>
@@ -34,10 +34,10 @@ export default async function DashboardPage() {
             <CardTitle>Track work</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm leading-6 text-stone-600">Open request lists, queues, and administrative views from the navigation.</p>
+            <p className="text-sm leading-6 text-[#655c50]">Open request lists, queues, and administrative views from the navigation.</p>
             <Button asChild variant="outline" className="mt-4">
               <Link href={permissions.includes("request:update_status") ? "/officer" : "/requests"}>
-                <ClipboardList className="h-4 w-4" aria-hidden="true" />
+                <ClipboardText className="h-4 w-4" weight="duotone" aria-hidden="true" />
                 Open work
               </Link>
             </Button>
