@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ShieldCheck } from "lucide-react";
 import { navItems, type RoleName } from "@/config/nav";
 import { cn } from "@/lib/utils";
+import { NotificationBell } from "@/components/shared/NotificationBell";
 
 type AppShellProps = {
   children: React.ReactNode;
@@ -37,6 +38,7 @@ export function AppShell({ children, role = "student_staff" }: AppShellProps) {
               );
             })}
           </nav>
+          <NotificationBell />
         </div>
       </header>
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[220px_1fr] lg:px-8">

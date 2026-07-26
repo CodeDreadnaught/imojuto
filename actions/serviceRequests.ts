@@ -10,6 +10,7 @@ import { requireSession } from "@/lib/session";
 import { Assignment, RequestCategory, Role, ServiceRequest, StatusLog, User } from "@/models";
 import type { RequestPriority } from "@/components/shared/PriorityBadge";
 import type { RequestStatus } from "@/components/shared/StatusBadge";
+import { notifyRequester } from "@/actions/notifications";
 
 type RequestActionState = {
   ok: boolean;
@@ -355,6 +356,12 @@ export async function updateRequestStatus(_state: RequestActionState, formData: 
     toStatus: parsed.data.toStatus,
     note: parsed.data.note,
   });
+
+  await notifyRequester(
+    String(request._id),
+    `${request.referenceCode} changed to ${parsed.data.toStatus.replace("_", " ")}.`,
+    parsed.data.toStatus === "resolved" ? "resolved" : "status_changed",
+  );
 
   revalidatePath("/officer");
   revalidatePath(`/requests/${request._id}`);

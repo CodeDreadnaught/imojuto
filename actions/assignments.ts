@@ -7,6 +7,7 @@ import { connectDb } from "@/lib/db";
 import { requireCapability } from "@/lib/rbac";
 import { requireSession } from "@/lib/session";
 import { Assignment, ServiceRequest, StatusLog } from "@/models";
+import { createNotification } from "@/actions/notifications";
 
 type AssignmentActionState = {
   ok: boolean;
@@ -69,6 +70,13 @@ export async function assignOfficer(_state: AssignmentActionState, formData: For
     fromStatus,
     toStatus: "assigned",
     note: parsed.data.notes || "Officer assigned.",
+  });
+
+  await createNotification({
+    userId: parsed.data.officerId,
+    type: "assigned",
+    serviceRequestId: String(request._id),
+    message: `You have been assigned ${request.referenceCode}.`,
   });
 
   revalidatePath("/admin/requests");

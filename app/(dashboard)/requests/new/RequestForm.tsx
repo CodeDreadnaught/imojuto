@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { Send } from "lucide-react";
 import { createServiceRequest } from "@/actions/serviceRequests";
+import { AttachmentUploader } from "@/components/requests/AttachmentUploader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -90,10 +91,7 @@ export function RequestForm({ categories }: { categories: Category[] }) {
         <Label htmlFor="locationNotes">Location notes</Label>
         <Input id="locationNotes" name="locationNotes" placeholder="Nearest entrance or landmark" />
       </div>
-      <div className="grid gap-2">
-        <Label htmlFor="attachments">Evidence image URLs</Label>
-        <Textarea id="attachments" name="attachments" placeholder="Upload integration adds Blob URLs here in the evidence chunk." className="min-h-20" />
-      </div>
+      <AttachmentUploader />
       {state.message ? <p className="text-sm text-red-700">{state.message}</p> : null}
       <Button type="submit" disabled={pending} className="justify-self-start">
         <Send className="h-4 w-4" aria-hidden="true" />
