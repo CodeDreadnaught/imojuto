@@ -42,7 +42,9 @@ Screenshots are stored in `public/report-screenshots/` and linked here as each m
 
 ## 9. Testing Evidence
 
-This section records `tsc`, lint, build, and feature test evidence after each implementation wave.
+Wave 1 scaffold evidence: `bunx tsc --noEmit` passed and `bun run lint` passed after tightening the shared input primitive types.
+
+Wave 2 model evidence: model tests validate enum and required relationship constraints for roles, users, categories, and service requests.
 
 ## 10. Deployment Information
 
