@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "seed": "bun scripts/seed.ts",
-    "test:models": "vitest run tests/models.test.ts"
+    "test:models": "vitest run tests/models.test.ts",
+    "test:rbac": "vitest run tests/rbac.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.5.7",

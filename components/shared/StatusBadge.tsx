@@ -1,25 +1,32 @@
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import type { requestStatuses } from "@/models/serviceRequest";
 
-const statusStyles = {
-  submitted: "bg-sky-100 text-sky-950",
-  assigned: "bg-violet-100 text-violet-950",
-  in_progress: "bg-amber-100 text-amber-950",
-  resolved: "bg-emerald-100 text-emerald-950",
-  closed: "bg-stone-200 text-stone-800",
-  reopened: "bg-rose-100 text-rose-950",
-};
+export type RequestStatus = (typeof requestStatuses)[number];
 
-const statusLabels = {
+export const statusLabels = {
   submitted: "Submitted",
   assigned: "Assigned",
   in_progress: "In progress",
   resolved: "Resolved",
   closed: "Closed",
   reopened: "Reopened",
+} satisfies Record<RequestStatus, string>;
+
+export const statusStyles = {
+  submitted: "border border-cyan-200 bg-cyan-50 text-cyan-900",
+  assigned: "border border-fuchsia-200 bg-fuchsia-50 text-fuchsia-900",
+  in_progress: "border border-amber-200 bg-amber-50 text-amber-900",
+  resolved: "border border-emerald-200 bg-emerald-50 text-emerald-900",
+  closed: "border border-stone-300 bg-stone-200 text-stone-800",
+  reopened: "border border-rose-200 bg-rose-50 text-rose-900",
+} satisfies Record<RequestStatus, string>;
+
+type StatusBadgeProps = {
+  status: RequestStatus;
+  className?: string;
 };
 
-export type RequestStatus = keyof typeof statusStyles;
-
-export function StatusBadge({ status }: { status: RequestStatus }) {
-  return <Badge className={statusStyles[status]}>{statusLabels[status]}</Badge>;
+export function StatusBadge({ status, className }: StatusBadgeProps) {
+  return <Badge className={cn(statusStyles[status], className)}>{statusLabels[status]}</Badge>;
 }
