@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { Send } from "lucide-react";
+import { PaperPlaneTilt } from "@phosphor-icons/react";
 import { createServiceRequest } from "@/actions/serviceRequests";
 import { AttachmentUploader } from "@/components/requests/AttachmentUploader";
 import { Button } from "@/components/ui/button";
@@ -31,7 +31,7 @@ export function RequestForm({ categories }: { categories: Category[] }) {
   const [state, formAction, pending] = useActionState(createServiceRequest, initialState);
 
   return (
-    <form action={formAction} className="grid gap-5 rounded-lg border border-stone-200 bg-white p-5 shadow-sm">
+    <form action={formAction} className="grid gap-5 rounded-lg border border-[#ded5c5] bg-white/90 p-5 shadow-[0_18px_60px_rgba(39,36,31,0.06)]">
       <div className="grid gap-2">
         <Label htmlFor="title">Title</Label>
         <Input id="title" name="title" placeholder="Leaking pipe in hostel bathroom" required />
@@ -94,7 +94,7 @@ export function RequestForm({ categories }: { categories: Category[] }) {
       <AttachmentUploader />
       {state.message ? <p className="text-sm text-red-700">{state.message}</p> : null}
       <Button type="submit" disabled={pending} className="justify-self-start">
-        <Send className="h-4 w-4" aria-hidden="true" />
+        <PaperPlaneTilt className="h-4 w-4" weight="duotone" aria-hidden="true" />
         {pending ? "Submitting" : "Submit request"}
       </Button>
     </form>

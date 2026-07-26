@@ -1,4 +1,4 @@
-import { Boxes } from "lucide-react";
+import { SquaresFour } from "@phosphor-icons/react/dist/ssr";
 import { CategoryAdminClient } from "@/app/(admin)/admin/categories/category-admin-client";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { PageHeader } from "@/components/shared/PageHeader";
@@ -37,8 +37,7 @@ export default async function AdminCategoriesPage() {
   const categories = await getCategories();
 
   return (
-    <main className="min-h-screen bg-stone-50 px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <div>
         <PageHeader
           title="Request Categories"
           description="Create and maintain the categories students and staff use when submitting maintenance requests."
@@ -49,13 +48,12 @@ export default async function AdminCategoriesPage() {
           <div className="grid gap-6">
             <CategoryAdminClient categories={categories} />
             <EmptyState
-              icon={Boxes}
+              icon={SquaresFour}
               title="No categories yet"
               description="Add the first category to make it available in the request submission form."
             />
           </div>
         )}
-      </div>
-    </main>
+    </div>
   );
 }

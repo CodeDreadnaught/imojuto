@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Download } from "lucide-react";
+import { DownloadSimple } from "@phosphor-icons/react/dist/ssr";
 import { listActivity } from "@/actions/activityLog";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Button } from "@/components/ui/button";
@@ -17,7 +17,7 @@ export default async function ActivityPage() {
         actions={
           <Button asChild variant="outline">
             <Link href="/api/activity/export">
-              <Download className="h-4 w-4" aria-hidden="true" />
+              <DownloadSimple className="h-4 w-4" weight="duotone" aria-hidden="true" />
               Export CSV
             </Link>
           </Button>

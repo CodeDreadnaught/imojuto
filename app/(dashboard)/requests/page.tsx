@@ -1,4 +1,4 @@
-import { ClipboardList } from "lucide-react";
+import { ClipboardText } from "@phosphor-icons/react/dist/ssr";
 import { listMyRequests } from "@/actions/serviceRequests";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { PageHeader } from "@/components/shared/PageHeader";
@@ -23,7 +23,7 @@ export default async function RequestsPage(props: {
       {data.items.length ? (
         <RequestTable requests={data.items} />
       ) : (
-        <EmptyState icon={ClipboardList} title="No requests found" description="Submit a new request or adjust filters to see previous maintenance issues." />
+        <EmptyState icon={ClipboardText} title="No requests found" description="Submit a new request or adjust filters to see previous maintenance issues." />
       )}
     </div>
   );

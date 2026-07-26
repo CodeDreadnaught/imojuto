@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
 import { PriorityBadge, type RequestPriority } from "@/components/shared/PriorityBadge";
 import { StatusBadge, type RequestStatus } from "@/components/shared/StatusBadge";
 import { Button } from "@/components/ui/button";
@@ -33,7 +33,7 @@ export function RequestTable({ requests }: { requests: RequestRow[] }) {
       <TableBody>
         {requests.map((request) => (
           <TableRow key={request.id}>
-            <TableCell className="font-medium text-stone-950">{request.referenceCode}</TableCell>
+            <TableCell className="font-semibold text-[#27241f]">{request.referenceCode}</TableCell>
             <TableCell>{request.title}</TableCell>
             <TableCell>{request.category}</TableCell>
             <TableCell>
@@ -46,7 +46,7 @@ export function RequestTable({ requests }: { requests: RequestRow[] }) {
             <TableCell className="text-right">
               <Button asChild variant="ghost" size="sm">
                 <Link href={`/requests/${request.id}`}>
-                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                  <ArrowSquareOut className="h-4 w-4" weight="duotone" aria-hidden="true" />
                   View
                 </Link>
               </Button>

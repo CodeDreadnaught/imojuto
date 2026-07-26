@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafaf9;
-  --foreground: #1c1917;
+  --background: #f7f4ef;
+  --foreground: #1f201b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
-  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-montserrat), Montserrat, "Segoe UI", Arial, sans-serif;
+  --font-serif: var(--font-montserrat), Montserrat, "Segoe UI", Arial, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+  font-family: var(--font-montserrat), Montserrat, "Segoe UI", Arial, sans-serif;
 }
 
 button,
@@ -23,4 +23,65 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+::selection {
+  background: #1d4f43;
+  color: #fffaf1;
+}
+
+@keyframes page-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes queue-scan {
+  0% {
+    transform: translateX(-35%);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(135%);
+    opacity: 0;
+  }
+}
+
+.page-enter {
+  animation: page-rise 420ms ease-out both;
+}
+
+.panel-enter {
+  animation: soft-scale 480ms ease-out both;
+}
+
+.delay-1 {
+  animation-delay: 90ms;
+}
+
+.delay-2 {
+  animation-delay: 170ms;
+}
+
+.queue-scan {
+  animation: queue-scan 3.8s ease-in-out infinite;
 }

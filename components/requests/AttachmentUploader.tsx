@@ -1,6 +1,6 @@
 "use client";
 
-import { ImagePlus, X } from "lucide-react";
+import { ImageSquare, X } from "@phosphor-icons/react";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -41,7 +41,7 @@ export function AttachmentUploader() {
   }
 
   return (
-    <div className="grid gap-3 rounded-lg border border-dashed border-stone-300 bg-stone-50 p-4">
+    <div className="grid gap-3 rounded-lg border border-dashed border-[#d8cebe] bg-[#fbf7ef] p-4">
       <input type="hidden" name="attachments" value={urls.join("\n")} />
       <input
         ref={inputRef}
@@ -55,19 +55,19 @@ export function AttachmentUploader() {
         }}
       />
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-stone-600">{message}</p>
+        <p className="text-sm text-[#655c50]">{message}</p>
         <Button type="button" variant="outline" onClick={() => inputRef.current?.click()} disabled={uploading}>
-          <ImagePlus className="h-4 w-4" aria-hidden="true" />
+          <ImageSquare className="h-4 w-4" weight="duotone" aria-hidden="true" />
           {uploading ? "Uploading" : "Add evidence"}
         </Button>
       </div>
       {urls.length ? (
         <div className="grid gap-2 sm:grid-cols-2">
           {urls.map((url) => (
-            <div key={url} className="flex items-center justify-between gap-3 rounded-md border border-stone-200 bg-white p-2 text-xs text-stone-600">
+            <div key={url} className="flex items-center justify-between gap-3 rounded-md border border-[#ded5c5] bg-white p-2 text-xs text-[#655c50]">
               <span className="truncate">{url}</span>
-              <button type="button" onClick={() => setUrls((current) => current.filter((item) => item !== url))} className="rounded p-1 hover:bg-stone-100">
-                <X className="h-3.5 w-3.5" aria-hidden="true" />
+              <button type="button" onClick={() => setUrls((current) => current.filter((item) => item !== url))} className="cursor-pointer rounded p-1 hover:bg-[#efe8dc]">
+                <X className="h-3.5 w-3.5" weight="bold" aria-hidden="true" />
                 <span className="sr-only">Remove</span>
               </button>
             </div>
