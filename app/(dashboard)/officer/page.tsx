@@ -4,6 +4,7 @@ import { listOfficerQueue } from "@/actions/serviceRequests";
 import { StatusUpdateForm } from "@/components/officer/StatusUpdateForm";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { PageHeader } from "@/components/shared/PageHeader";
+import { PollingRefresh } from "@/components/shared/PollingRefresh";
 import { PriorityBadge } from "@/components/shared/PriorityBadge";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { Button } from "@/components/ui/button";
@@ -14,6 +15,7 @@ export default async function OfficerQueuePage() {
 
   return (
     <div>
+      <PollingRefresh />
       <PageHeader title="Officer Queue" description="Assigned maintenance work sorted with urgent requests first." />
       {requests.length ? (
         <div className="grid gap-4">

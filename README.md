@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Imojuto
 
-## Getting Started
+Imojuto is a university maintenance and service-request platform. Students and staff submit faults with category, location, priority, and evidence. Maintenance officers work assigned queues and update progress. Administrators manage categories, accounts, assignments, audit activity, and CSV reporting.
 
-First, run the development server:
+The system replaces paper, phone, WhatsApp, and walk-in maintenance intake with one traceable workflow:
+
+1. A requester submits a maintenance issue.
+2. An administrator assigns the issue to an active maintenance officer.
+3. The officer moves the request through assigned, in progress, and resolved states.
+4. The requester or an administrator can reopen a resolved or closed request.
+5. Status changes and assignments remain available in the audit log and CSV export.
+
+## Roles
+
+- Student/Staff: submit requests, track personal requests, attach evidence, reopen their own resolved or closed requests.
+- Maintenance Officer: view active assignments, prioritize urgent work first, add work notes, and update status.
+- Administrator: manage request categories, manage users, assign and reassign officers, reopen requests, review activity, and export CSV reports.
+
+## Architecture
+
+Imojuto is a Next.js 16 App Router application written in TypeScript. Server actions handle mutations so authorization checks stay next to writes. Route handlers are used only for authentication, image upload, and CSV export boundaries.
+
+MongoDB with Mongoose stores roles, users, request categories, service requests, assignments, status logs, and notifications. Relationships are explicit ObjectId references, while request location and attachments are embedded because they belong to a single request.
+
+NextAuth v5 provides credentials authentication with JWT sessions. The JWT includes `userId`, `roleId`, and permissions so route gating and server actions can enforce capability checks. Bcrypt stores password hashes. Vercel Blob stores evidence images. Nodemailer sends optional SMTP email notifications, while the notification collection powers in-app unread counts.
+
+## Environment
+
+Create `.env.local` with the values listed in `.env.example`. Local development needs MongoDB and seed admin credentials before the seed script can run. Uploads need `BLOB_READ_WRITE_TOKEN`. Email delivery needs the SMTP variables; without them, in-app notifications still work and email sending is skipped.
+
+## Commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun run dev
+bunx tsc --noEmit
+bun run lint
+bun run test:models
+bun run seed
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

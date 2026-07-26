@@ -2,6 +2,7 @@ import { ClipboardList } from "lucide-react";
 import { listMyRequests } from "@/actions/serviceRequests";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { PageHeader } from "@/components/shared/PageHeader";
+import { PollingRefresh } from "@/components/shared/PollingRefresh";
 import { RequestTable } from "@/components/requests/RequestTable";
 
 export default async function RequestsPage(props: {
@@ -17,6 +18,7 @@ export default async function RequestsPage(props: {
 
   return (
     <div>
+      <PollingRefresh />
       <PageHeader title="My Requests" description="Track submitted requests by reference, status, category, and timeline evidence." />
       {data.items.length ? (
         <RequestTable requests={data.items} />

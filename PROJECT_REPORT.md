@@ -34,17 +34,37 @@ The system uses MongoDB through Mongoose. The database supports explicit ObjectI
 
 ## 7. API Documentation
 
-This section is filled as server actions and route handlers are implemented.
+| Area | Interface | Purpose | Inputs | Writes | Required capability |
+|---|---|---|---|---|---|
+| Auth | `loginUser` | Sign in with credentials | email, password | JWT session | public |
+| Auth | `registerUser` | Create student/staff account | name, email, password, department, phone | `users` | public |
+| Categories | `createCategory`, `updateCategory`, `setCategoryActive` | Manage request categories | category fields | `requestCategories` | `category:manage` |
+| Requests | `createServiceRequest` | Submit maintenance request | title, description, category, location, priority, attachments | `serviceRequests`, `statusLogs` | `request:create` |
+| Requests | `updateRequestStatus`, `reopenRequest` | Move lifecycle status | request id, status, note | `serviceRequests`, `statusLogs`, `notifications` | officer assignment or reopen capability |
+| Assignments | `assignOfficer` | Assign or reassign officer | request id, officer id, notes | `assignments`, `serviceRequests`, `statusLogs`, `notifications` | `request:assign` |
+| Users | `createManagedUser`, `setUserActive` | Create/deactivate accounts | user fields, active flag | `users` | `user:manage` |
+| Upload | `POST /api/upload` | Store evidence image | image file | Vercel Blob URL | signed-in user |
+| Activity | `GET /api/activity/export` | Download CSV audit log | current activity query | CSV response | `activity:read` |
 
 ## 8. Screenshots of Major Interfaces
 
-Screenshots are stored in `public/report-screenshots/` and linked here as each major interface is completed.
+Screenshots are stored in `public/report-screenshots/`. The first capture target is the public landing page, followed by login/register, request submission, request detail timeline, officer queue, admin request overview, category management, user management, activity log, and notification bell.
 
 ## 9. Testing Evidence
 
 Wave 1 scaffold evidence: `bunx tsc --noEmit` passed and `bun run lint` passed after tightening the shared input primitive types.
 
 Wave 2 model evidence: model tests validate enum and required relationship constraints for roles, users, categories, and service requests.
+
+Wave 3 evidence: `test:auth`, `test:rbac`, and `test:categories` passed with TypeScript and lint.
+
+Wave 4 evidence: `test:auth-pages`, `test:submission`, and `test:tracking` passed with TypeScript and lint.
+
+Wave 5 evidence: `test:officer`, `test:admin-requests`, and `test:users` passed with TypeScript and lint.
+
+Wave 6 evidence: `test:upload` and `test:notifications` passed with TypeScript and lint.
+
+Wave 7 evidence: `test:activity` and `test:polling` passed with TypeScript and lint.
 
 ## 10. Deployment Information
 

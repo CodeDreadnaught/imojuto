@@ -3,6 +3,7 @@ import { reopenRequest, getRequestDetail } from "@/actions/serviceRequests";
 import { PriorityBadge } from "@/components/shared/PriorityBadge";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { StatusTimeline } from "@/components/requests/StatusTimeline";
+import { PollingRefresh } from "@/components/shared/PollingRefresh";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDate } from "@/lib/utils";
@@ -18,6 +19,7 @@ export default async function RequestDetailPage(props: { params: Promise<{ id: s
 
   return (
     <div className="grid gap-6">
+      <PollingRefresh />
       <div className="flex flex-col gap-4 border-b border-stone-200 pb-5 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-sm font-semibold text-emerald-800">{request.referenceCode}</p>

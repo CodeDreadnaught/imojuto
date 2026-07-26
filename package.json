@@ -19,7 +19,9 @@
     "test:admin-requests": "vitest run tests/admin-requests.test.ts",
     "test:users": "vitest run tests/users.test.ts",
     "test:upload": "vitest run tests/upload.test.ts",
-    "test:notifications": "vitest run tests/notifications.test.ts"
+    "test:notifications": "vitest run tests/notifications.test.ts",
+    "test:activity": "vitest run tests/activity.test.ts",
+    "test:polling": "vitest run tests/polling.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.5.7",
