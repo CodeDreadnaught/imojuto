@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed": "bun scripts/seed.ts",
+    "seed": "tsx scripts/seed.ts",
     "test:categories": "vitest run tests/categories.test.ts",
     "test:models": "vitest run tests/models.test.ts",
     "test:rbac": "vitest run tests/rbac.test.ts",
@@ -59,6 +59,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
     "tailwindcss": "^4",
+    "tsx": "^4.23.1",
     "typescript": "^5",
     "vitest": "^4.1.10"
   },
