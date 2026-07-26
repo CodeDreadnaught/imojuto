@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { UserRoundCheck } from "lucide-react";
+import { UserCircleCheck } from "@phosphor-icons/react";
 import { assignOfficer } from "@/actions/assignments";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -23,7 +23,7 @@ export function AssignOfficerDialog({ requestId, officers }: { requestId: string
     <Dialog>
       <DialogTrigger asChild>
         <Button size="sm" variant="outline">
-          <UserRoundCheck className="h-4 w-4" aria-hidden="true" />
+          <UserCircleCheck className="h-4 w-4" weight="duotone" aria-hidden="true" />
           Assign
         </Button>
       </DialogTrigger>
@@ -46,7 +46,7 @@ export function AssignOfficerDialog({ requestId, officers }: { requestId: string
             </SelectContent>
           </Select>
           <Textarea name="notes" placeholder="Assignment notes" className="min-h-20" />
-          {state.message ? <p className={state.ok ? "text-sm text-emerald-800" : "text-sm text-red-700"}>{state.message}</p> : null}
+          {state.message ? <p className={state.ok ? "text-sm font-semibold text-[#1d4f43]" : "text-sm text-red-700"}>{state.message}</p> : null}
           <Button type="submit" disabled={pending}>
             {pending ? "Assigning" : "Assign officer"}
           </Button>

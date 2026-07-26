@@ -37,7 +37,7 @@ export function RequestOverviewTable({ requests, officers }: { requests: Request
       <TableBody>
         {requests.map((request) => (
           <TableRow key={request.id}>
-            <TableCell className="font-medium text-stone-950">{request.referenceCode}</TableCell>
+            <TableCell className="font-semibold text-[#27241f]">{request.referenceCode}</TableCell>
             <TableCell>{request.title}</TableCell>
             <TableCell>{request.requester}</TableCell>
             <TableCell>

@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+});
 
 export const metadata: Metadata = {
   title: "Imojuto",
@@ -12,8 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="min-h-full bg-stone-50 text-stone-950">{children}</body>
+    <html lang="en" className="h-full">
+      <body
+        className={`min-h-full bg-[#f7f4ef] text-[#27241f] antialiased scroll-smooth ${montserrat.variable}`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

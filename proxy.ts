@@ -15,7 +15,7 @@ type AuthState = {
 
 const adminPrefix = "/admin";
 const officerPrefix = "/officer";
-const dashboardPrefixes = ["/dashboard", "/requests", adminPrefix, officerPrefix];
+const dashboardPrefixes = ["/dashboard", "/requests", "/notifications", adminPrefix, officerPrefix];
 
 function isProtectedPath(pathname: string) {
   return dashboardPrefixes.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
@@ -71,5 +71,5 @@ export const proxy = auth((request) => {
 });
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/requests/:path*", "/admin/:path*", "/officer/:path*"],
+  matcher: ["/dashboard/:path*", "/requests/:path*", "/notifications/:path*", "/notifications", "/admin/:path*", "/officer/:path*"],
 };

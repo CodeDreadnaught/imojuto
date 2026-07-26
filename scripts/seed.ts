@@ -45,7 +45,7 @@ async function seed() {
   const roleDocs = await Promise.all(
     roles.map((role) =>
       Role.findOneAndUpdate({ name: role.name }, role, {
-        new: true,
+        returnDocument: "after",
         upsert: true,
         setDefaultsOnInsert: true,
       }),
@@ -57,7 +57,7 @@ async function seed() {
       RequestCategory.findOneAndUpdate(
         { slug: slugify(name) },
         { name, slug: slugify(name), isActive: true },
-        { new: true, upsert: true, setDefaultsOnInsert: true },
+        { returnDocument: "after", upsert: true, setDefaultsOnInsert: true },
       ),
     ),
   );
@@ -77,7 +77,7 @@ async function seed() {
       roleId: adminRole._id,
       isActive: true,
     },
-    { new: true, upsert: true, setDefaultsOnInsert: true },
+    { returnDocument: "after", upsert: true, setDefaultsOnInsert: true },
   );
 
   console.log("Seed complete");

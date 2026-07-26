@@ -1,11 +1,12 @@
 "use client";
 
 import { useActionState } from "react";
-import { UserPlus } from "lucide-react";
+import { UserPlus } from "@phosphor-icons/react";
 import { registerUser } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PasswordInput } from "@/components/ui/password-input";
 
 type AuthActionState = {
   ok: boolean;
@@ -36,7 +37,7 @@ export function RegisterForm() {
       </div>
       <div className="grid gap-2">
         <Label htmlFor="password">Password</Label>
-        <Input id="password" name="password" type="password" autoComplete="new-password" required />
+        <PasswordInput id="password" name="password" autoComplete="new-password" required />
         <FieldError messages={state.fieldErrors?.password} />
       </div>
       <div className="grid gap-2 sm:grid-cols-2">
@@ -51,7 +52,7 @@ export function RegisterForm() {
       </div>
       {state.message ? <p className="text-sm text-red-700">{state.message}</p> : null}
       <Button type="submit" disabled={pending}>
-        <UserPlus className="h-4 w-4" aria-hidden="true" />
+        <UserPlus className="h-4 w-4" weight="duotone" aria-hidden="true" />
         {pending ? "Creating account" : "Create account"}
       </Button>
     </form>

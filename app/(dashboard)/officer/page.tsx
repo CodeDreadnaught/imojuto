@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ClipboardList } from "lucide-react";
+import { ClipboardText } from "@phosphor-icons/react/dist/ssr";
 import { listOfficerQueue } from "@/actions/serviceRequests";
 import { StatusUpdateForm } from "@/components/officer/StatusUpdateForm";
 import { EmptyState } from "@/components/shared/EmptyState";
@@ -23,7 +23,7 @@ export default async function OfficerQueuePage() {
             <Card key={request.id}>
               <CardHeader className="flex-row items-start justify-between gap-4">
                 <div>
-                  <p className="text-sm font-semibold text-emerald-800">{request.referenceCode}</p>
+                  <p className="text-sm font-semibold text-[#1d4f43]">{request.referenceCode}</p>
                   <CardTitle className="mt-1">{request.title}</CardTitle>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -32,7 +32,7 @@ export default async function OfficerQueuePage() {
                 </div>
               </CardHeader>
               <CardContent className="grid gap-4 lg:grid-cols-[1fr_300px]">
-                <p className="text-sm leading-6 text-stone-600">{request.description}</p>
+                <p className="text-sm leading-6 text-[#655c50]">{request.description}</p>
                 <div className="grid gap-3">
                   <StatusUpdateForm requestId={request.id} />
                   <Button asChild variant="outline" size="sm">
@@ -44,7 +44,7 @@ export default async function OfficerQueuePage() {
           ))}
         </div>
       ) : (
-        <EmptyState icon={ClipboardList} title="No active assignments" description="Assigned and reopened work will appear here automatically." />
+        <EmptyState icon={ClipboardText} title="No active assignments" description="Assigned and reopened work will appear here automatically." />
       )}
     </div>
   );

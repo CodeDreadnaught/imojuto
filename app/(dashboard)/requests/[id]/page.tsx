@@ -20,11 +20,11 @@ export default async function RequestDetailPage(props: { params: Promise<{ id: s
   return (
     <div className="grid gap-6">
       <PollingRefresh />
-      <div className="flex flex-col gap-4 border-b border-stone-200 pb-5 sm:flex-row sm:items-start sm:justify-between">
+      <div className="flex flex-col gap-4 border-b border-[#ded5c5] pb-5 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <p className="text-sm font-semibold text-emerald-800">{request.referenceCode}</p>
-          <h1 className="mt-1 font-serif text-3xl font-semibold text-stone-950">{request.title}</h1>
-          <p className="mt-2 text-sm text-stone-600">{request.category}</p>
+          <p className="text-sm font-semibold text-[#1d4f43]">{request.referenceCode}</p>
+          <h1 className="mt-1 text-3xl font-semibold text-[#27241f]">{request.title}</h1>
+          <p className="mt-2 text-sm text-[#655c50]">{request.category}</p>
         </div>
         <div className="flex flex-wrap gap-2">
           <PriorityBadge priority={request.priority} />
@@ -38,7 +38,7 @@ export default async function RequestDetailPage(props: { params: Promise<{ id: s
               <CardTitle>Description</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm leading-6 text-stone-700">{request.description}</p>
+              <p className="text-sm leading-6 text-[#655c50]">{request.description}</p>
             </CardContent>
           </Card>
           <Card>
@@ -55,11 +55,11 @@ export default async function RequestDetailPage(props: { params: Promise<{ id: s
             <CardHeader>
               <CardTitle>Location</CardTitle>
             </CardHeader>
-            <CardContent className="text-sm leading-6 text-stone-700">
+            <CardContent className="text-sm leading-6 text-[#655c50]">
               <p>{request.location.building}</p>
               <p>{request.location.roomOrArea}</p>
               {request.location.notes ? <p>{request.location.notes}</p> : null}
-              <p className="mt-3 text-stone-500">Created {formatDate(request.createdAt)}</p>
+              <p className="mt-3 text-[#8a7a67]">Created {formatDate(request.createdAt)}</p>
             </CardContent>
           </Card>
           {assignments.length ? (
@@ -69,10 +69,10 @@ export default async function RequestDetailPage(props: { params: Promise<{ id: s
               </CardHeader>
               <CardContent className="grid gap-3">
                 {assignments.map((assignment) => (
-                  <div key={assignment.id} className="rounded-md border border-stone-200 p-3 text-sm">
-                    <p className="font-medium text-stone-950">{assignment.officer}</p>
-                    <p className="text-stone-600">Assigned by {assignment.assignedBy}</p>
-                    <p className="text-stone-500">{formatDate(assignment.assignedAt)}</p>
+                  <div key={assignment.id} className="rounded-md border border-[#ded5c5] bg-white/70 p-3 text-sm">
+                    <p className="font-semibold text-[#27241f]">{assignment.officer}</p>
+                    <p className="text-[#655c50]">Assigned by {assignment.assignedBy}</p>
+                    <p className="text-[#8a7a67]">{formatDate(assignment.assignedAt)}</p>
                   </div>
                 ))}
               </CardContent>

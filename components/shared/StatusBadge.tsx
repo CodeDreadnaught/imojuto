@@ -14,12 +14,12 @@ export const statusLabels = {
 } satisfies Record<RequestStatus, string>;
 
 export const statusStyles = {
-  submitted: "border border-cyan-200 bg-cyan-50 text-cyan-900",
-  assigned: "border border-fuchsia-200 bg-fuchsia-50 text-fuchsia-900",
-  in_progress: "border border-amber-200 bg-amber-50 text-amber-900",
-  resolved: "border border-emerald-200 bg-emerald-50 text-emerald-900",
-  closed: "border border-stone-300 bg-stone-200 text-stone-800",
-  reopened: "border border-rose-200 bg-rose-50 text-rose-900",
+  submitted: "border border-[#b7dbe5] bg-[#e8f6f8] text-[#164f5a]",
+  assigned: "border border-[#d8c6ec] bg-[#f2eafa] text-[#553073]",
+  in_progress: "border border-[#ead099] bg-[#fff4d6] text-[#765315]",
+  resolved: "border border-[#b9d8c7] bg-[#e6f2eb] text-[#1d4f43]",
+  closed: "border border-[#d8cebe] bg-[#e8e1d6] text-[#5c5449]",
+  reopened: "border border-[#edc3c9] bg-[#fff0f2] text-[#8b2e3b]",
 } satisfies Record<RequestStatus, string>;
 
 type StatusBadgeProps = {

@@ -1,7 +1,7 @@
 "use client";
 
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import { Check } from "lucide-react";
+import { Check } from "@phosphor-icons/react";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
@@ -12,13 +12,13 @@ const Checkbox = React.forwardRef<
   <CheckboxPrimitive.Root
     ref={ref}
     className={cn(
-      "peer h-4 w-4 shrink-0 rounded border border-stone-300 bg-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-emerald-700 data-[state=checked]:bg-emerald-700 data-[state=checked]:text-white",
+      "peer h-4 w-4 shrink-0 cursor-pointer rounded border border-[#d8cebe] bg-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4f43] disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-[#1d4f43] data-[state=checked]:bg-[#1d4f43] data-[state=checked]:text-white",
       className,
     )}
     {...props}
   >
     <CheckboxPrimitive.Indicator className="flex items-center justify-center text-current">
-      <Check className="h-3.5 w-3.5" />
+      <Check className="h-3.5 w-3.5" weight="bold" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ));

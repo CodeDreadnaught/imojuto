@@ -12,13 +12,13 @@ export function PageHeader({ title, description, actions, className }: PageHeade
   return (
     <div
       className={cn(
-        "mb-6 flex flex-col gap-4 border-b border-stone-200 pb-5 sm:flex-row sm:items-end sm:justify-between",
+        "mb-7 flex flex-col gap-4 border-b border-[#ded5c5] pb-5 sm:flex-row sm:items-end sm:justify-between",
         className,
       )}
     >
       <div className="min-w-0">
-        <h1 className="font-serif text-3xl font-semibold tracking-normal text-stone-950">{title}</h1>
-        {description ? <p className="mt-2 max-w-3xl text-sm leading-6 text-stone-600">{description}</p> : null}
+        <h1 className="text-3xl font-semibold tracking-normal text-[#27241f] sm:text-4xl">{title}</h1>
+        {description ? <p className="mt-2 max-w-3xl text-sm leading-6 text-[#655c50]">{description}</p> : null}
       </div>
       {actions ? <div className="flex shrink-0 flex-wrap items-center gap-2">{actions}</div> : null}
     </div>

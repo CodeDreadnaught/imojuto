@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle } from "@phosphor-icons/react";
 import { updateRequestStatus } from "@/actions/serviceRequests";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -25,9 +25,9 @@ export function StatusUpdateForm({ requestId }: { requestId: string }) {
         </SelectContent>
       </Select>
       <Textarea name="note" placeholder="Work note" className="min-h-20" />
-      {state.message ? <p className={state.ok ? "text-xs text-emerald-800" : "text-xs text-red-700"}>{state.message}</p> : null}
+      {state.message ? <p className={state.ok ? "text-xs font-semibold text-[#1d4f43]" : "text-xs text-red-700"}>{state.message}</p> : null}
       <Button type="submit" size="sm" disabled={pending}>
-        <CheckCircle className="h-4 w-4" aria-hidden="true" />
+        <CheckCircle className="h-4 w-4" weight="duotone" aria-hidden="true" />
         {pending ? "Updating" : "Update status"}
       </Button>
     </form>

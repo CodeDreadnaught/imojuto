@@ -1,4 +1,7 @@
+import { loadEnvConfig } from "@next/env";
 import { z } from "zod";
+
+loadEnvConfig(process.cwd());
 
 const envSchema = z.object({
   MONGODB_URI: z.string().min(1).optional(),
