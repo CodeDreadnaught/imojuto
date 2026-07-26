@@ -14,7 +14,10 @@
     "test:auth": "vitest run tests/auth.test.ts",
     "test:auth-pages": "vitest run tests/auth-pages.test.ts",
     "test:submission": "vitest run tests/submission.test.ts",
-    "test:tracking": "vitest run tests/tracking.test.ts"
+    "test:tracking": "vitest run tests/tracking.test.ts",
+    "test:officer": "vitest run tests/officer.test.ts",
+    "test:admin-requests": "vitest run tests/admin-requests.test.ts",
+    "test:users": "vitest run tests/users.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.5.7",
