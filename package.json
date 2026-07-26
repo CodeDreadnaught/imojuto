@@ -11,7 +11,8 @@
     "test:categories": "vitest run tests/categories.test.ts",
     "test:models": "vitest run tests/models.test.ts",
     "test:rbac": "vitest run tests/rbac.test.ts",
-    "test:auth": "vitest run tests/auth.test.ts"
+    "test:auth": "vitest run tests/auth.test.ts",
+    "test:auth-pages": "vitest run tests/auth-pages.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.5.7",
