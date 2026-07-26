@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { ShieldCheckered, SquaresFour } from "@phosphor-icons/react/dist/ssr";
+import { SignOut, ShieldCheckered, SquaresFour } from "@phosphor-icons/react/dist/ssr";
+import { signOutUser } from "@/actions/auth";
+import { Button } from "@/components/ui/button";
 import { navItems, type RoleName } from "@/config/nav";
 import { cn } from "@/lib/utils";
 import { NotificationBell } from "@/components/shared/NotificationBell";
@@ -38,7 +40,15 @@ export function AppShell({ children, role = "student_staff" }: AppShellProps) {
               );
             })}
           </nav>
-          <NotificationBell />
+          <div className="flex items-center gap-2">
+            <NotificationBell />
+            <form action={signOutUser}>
+              <Button type="submit" variant="ghost" size="sm" aria-label="Log out">
+                <SignOut className="h-4 w-4" weight="duotone" aria-hidden="true" />
+                <span className="hidden sm:inline">Log out</span>
+              </Button>
+            </form>
+          </div>
         </div>
       </header>
       <div className="mx-auto grid max-w-[1480px] gap-7 px-4 py-6 sm:px-6 lg:grid-cols-[250px_1fr] lg:px-8">
@@ -63,6 +73,12 @@ export function AppShell({ children, role = "student_staff" }: AppShellProps) {
               );
             })}
             </nav>
+            <form action={signOutUser} className="mt-4 border-t border-[#ded5c5] pt-3">
+              <Button type="submit" variant="ghost" className="w-full justify-start text-[#655c50] hover:bg-white hover:text-[#27241f]">
+                <SignOut className="h-4 w-4" weight="duotone" aria-hidden="true" />
+                Log out
+              </Button>
+            </form>
           </div>
         </aside>
         <main className="page-enter min-w-0">{children}</main>
