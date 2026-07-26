@@ -8,8 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-montserrat), Montserrat, "Segoe UI", Arial, sans-serif;
-  --font-serif: var(--font-montserrat), Montserrat, "Segoe UI", Arial, sans-serif;
+  --font-montserrat: var(--font-montserrat), Montserrat, "Segoe UI", Arial, sans-serif;
 }
 
 body {
@@ -35,6 +34,7 @@ select {
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -46,6 +46,7 @@ select {
     opacity: 0;
     transform: scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -57,9 +58,11 @@ select {
     transform: translateX(-35%);
     opacity: 0;
   }
+
   35% {
     opacity: 0.5;
   }
+
   100% {
     transform: translateX(135%);
     opacity: 0;
