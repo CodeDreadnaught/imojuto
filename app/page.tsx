@@ -107,7 +107,7 @@ export default async function Home() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg">
                   <Link href={loginHref}>
-                    {isLoggedIn ? "Open dashboard" : "Open workspace"}
+                    Open workspace
                     <ArrowRight
                       className="h-4 w-4"
                       weight="duotone"
