@@ -8,6 +8,11 @@ import { requireSession } from "@/lib/session";
 export default async function DashboardPage() {
   const session = await requireSession();
   const permissions = session.user.permissions;
+  const workHref = permissions.includes("request:read:all")
+    ? "/admin/requests"
+    : permissions.includes("request:update_status") || permissions.includes("request:read:assigned")
+      ? "/officer"
+      : "/requests";
 
   return (
     <div>
@@ -36,7 +41,7 @@ export default async function DashboardPage() {
           <CardContent>
             <p className="text-sm leading-6 text-[#655c50]">Open request lists, queues, and administrative views from the navigation.</p>
             <Button asChild variant="outline" className="mt-4">
-              <Link href={permissions.includes("request:update_status") ? "/officer" : "/requests"}>
+              <Link href={workHref}>
                 <ClipboardText className="h-4 w-4" weight="duotone" aria-hidden="true" />
                 Open work
               </Link>
