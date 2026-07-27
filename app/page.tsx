@@ -14,6 +14,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { getSession } from "@/lib/session";
 import type { Icon } from "@phosphor-icons/react/dist/lib/types";
 
 const featureCards: { icon: Icon; title: string; description: string }[] = [
@@ -49,7 +50,13 @@ const metrics = [
   { icon: CheckCircle, label: "Resolved", value: "34 this week" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const session = await getSession();
+  const isLoggedIn = Boolean(session?.user);
+  const dashboardHref = "/dashboard";
+  const loginHref = isLoggedIn ? dashboardHref : "/login";
+  const registerHref = isLoggedIn ? dashboardHref : "/register";
+
   return (
     <main className="min-h-screen overflow-hidden bg-[#f7f4ef] text-[#27241f]">
       <section className="border-b border-[#ded5c5] bg-[#fffaf1]">
@@ -68,11 +75,13 @@ export default function Home() {
               </span>
             </Link>
             <div className="flex items-center gap-2">
-              <Button asChild variant="ghost" size="sm">
-                <Link href="/login">Sign in</Link>
-              </Button>
+              {!isLoggedIn ? (
+                <Button asChild variant="ghost" size="sm">
+                  <Link href="/login">Sign in</Link>
+                </Button>
+              ) : null}
               <Button asChild size="sm">
-                <Link href="/register">Create account</Link>
+                <Link href={registerHref}>{isLoggedIn ? "Dashboard" : "Create account"}</Link>
               </Button>
             </div>
           </nav>
@@ -97,8 +106,8 @@ export default function Home() {
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg">
-                  <Link href="/login">
-                    Open workspace
+                  <Link href={loginHref}>
+                    {isLoggedIn ? "Open dashboard" : "Open workspace"}
                     <ArrowRight
                       className="h-4 w-4"
                       weight="duotone"
@@ -107,7 +116,7 @@ export default function Home() {
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <Link href="/register">Submit first request</Link>
+                  <Link href={registerHref}>Submit first request</Link>
                 </Button>
               </div>
               <div className="mt-10 grid max-w-lg grid-cols-3 gap-3">

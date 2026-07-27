@@ -2,9 +2,9 @@ import Link from "next/link";
 import { SignOut, ShieldCheckered, SquaresFour } from "@phosphor-icons/react/dist/ssr";
 import { signOutUser } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
-import { navItems, type RoleName } from "@/config/nav";
-import { cn } from "@/lib/utils";
+import type { RoleName } from "@/config/nav";
 import { NotificationBell } from "@/components/shared/NotificationBell";
+import { WorkspaceMobileNav, WorkspaceSideNav } from "@/components/layout/WorkspaceNav";
 
 type AppShellProps = {
   children: React.ReactNode;
@@ -12,7 +12,6 @@ type AppShellProps = {
 };
 
 export function AppShell({ children, role = "student_staff" }: AppShellProps) {
-  const items = navItems[role];
   return (
     <div className="min-h-screen bg-[#f7f4ef] text-[#27241f]">
       <header className="sticky top-0 z-20 border-b border-[#ded5c5] bg-[#fffaf1]/90 backdrop-blur-xl">
@@ -23,23 +22,6 @@ export function AppShell({ children, role = "student_staff" }: AppShellProps) {
             </span>
             <span className="text-lg font-semibold tracking-tight text-[#27241f]">Imojuto</span>
           </Link>
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
-            {items.map((item) => {
-              const Icon = item.icon;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-[#655c50] transition hover:bg-[#efe8dc] hover:text-[#27241f]",
-                  )}
-                >
-                  <Icon className="h-4 w-4" weight="duotone" aria-hidden="true" />
-                  {item.title}
-                </Link>
-              );
-            })}
-          </nav>
           <div className="flex items-center gap-2">
             <NotificationBell />
             <form action={signOutUser}>
@@ -58,21 +40,7 @@ export function AppShell({ children, role = "student_staff" }: AppShellProps) {
               <SquaresFour className="h-4 w-4" weight="duotone" aria-hidden="true" />
               Workspace
             </div>
-            <nav className="flex flex-col gap-1" aria-label="Sidebar navigation">
-            {items.map((item) => {
-              const Icon = item.icon;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="inline-flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-semibold text-[#655c50] transition hover:bg-white hover:text-[#27241f] hover:shadow-sm"
-                >
-                  <Icon className="h-4 w-4" weight="duotone" aria-hidden="true" />
-                  {item.title}
-                </Link>
-              );
-            })}
-            </nav>
+            <WorkspaceSideNav role={role} />
             <form action={signOutUser} className="mt-4 border-t border-[#ded5c5] pt-3">
               <Button type="submit" variant="ghost" className="w-full justify-start text-[#655c50] hover:bg-white hover:text-[#27241f]">
                 <SignOut className="h-4 w-4" weight="duotone" aria-hidden="true" />
@@ -81,8 +49,9 @@ export function AppShell({ children, role = "student_staff" }: AppShellProps) {
             </form>
           </div>
         </aside>
-        <main className="page-enter min-w-0">{children}</main>
+        <main className="page-enter min-w-0 pb-24 lg:pb-0">{children}</main>
       </div>
+      <WorkspaceMobileNav role={role} />
     </div>
   );
 }
